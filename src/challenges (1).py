@@ -18,7 +18,7 @@ def cargo_window(items: list[object], start: int, size: int) -> list[object]:
 
     Return an empty list if ``start`` is out of range or if ``size <= 0``.
     """
-    if start < 0 or start >= len(items) or size <= 0:
+    if size <= 0 or start < 0 or start >= len(items):
         return []
     return items[start:start + size]
 
@@ -29,8 +29,8 @@ def first_supply_index(items: list[object], target: object) -> int:
     Return -1 if the target is not found.
     Do not use ``items.index(...)`` for this challenge.
     """
-    for i, value in enumerate(items):
-        if value == target:
+    for i in range(len(items)):
+        if items[i] == target:
             return i
     return -1
 
@@ -43,8 +43,8 @@ def supply_report(items: list[object], target: object) -> tuple[int, int]:
     count = 0
     first_index = -1
 
-    for i, value in enumerate(items):
-        if value == target:
+    for i in range(len(items)):
+        if items[i] == target:
             count += 1
             if first_index == -1:
                 first_index = i
